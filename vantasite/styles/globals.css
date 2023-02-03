@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @import url(https://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
 
 #days {
@@ -21,22 +22,65 @@
   color: #abcd58;
 }
 
-div {
-  display: inline-block;
-  line-height: 1;
-  padding: 20px;
-  font-size: 40px;
+svg * { transform-origin: 50% }
+
+@keyframes left {
+  100% { transform: rotate(-360deg) }
 }
 
-span {
-  display: block;
-  font-size: 20px;
-  color: white;
+@keyframes right {
+  100% { transform: rotate(360deg) }
 }
 
 body {
   text-align: center;
   font-family: 'Covered By Your Grace', cursive;
   color: white;
-  background: #222;
+  background: #000;
+}
+
+
+svg * {
+  transform-origin: 50%;
+}
+
+@-webkit-keyframes blob_one {
+  to {
+    transform: rotate(-1turn) translate(-12.5%, -12.5%);
+  }
+}
+@keyframes blob_one {
+  to {
+    transform: rotate(-1turn) translate(-12.5%, -12.5%);
+  }
+}
+@-webkit-keyframes blob_two {
+  to {
+    transform: rotate(-1turn) translate(12.5%, -12.5%);
+  }
+}
+@keyframes blob_two {
+  to {
+    transform: rotate(-1turn) translate(12.5%, -12.5%);
+  }
+}
+@-webkit-keyframes blob_three {
+  to {
+    transform: rotate(-1turn) translate(-12.5%, 12.5%);
+  }
+}
+@keyframes blob_three {
+  to {
+    transform: rotate(-1turn) translate(-12.5%, 12.5%);
+  }
+}
+@-webkit-keyframes blob_four {
+  to {
+    transform: rotate(-1turn) translate(-12.5%, -12.5%);
+  }
+}
+@keyframes blob_four {
+  to {
+    transform: rotate(-1turn) translate(-12.5%, -12.5%);
+  }
 }
