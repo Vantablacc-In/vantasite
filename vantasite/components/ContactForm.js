@@ -35,13 +35,13 @@ function Form() {
 
   return (
     <div className="pb-10">
-      <form class=" flex flex-row items-center justify-evenly space-y-10 my-9">
-        <div class="space-x-5 relative justify-center">
+      <form className=" flex flex-row items-center justify-evenly space-y-10 my-9">
+        <div className="space-x-5 relative justify-center">
           <input
             type="text"
             id="name"
             name="name"
-            class="border-transparent appearance-none border-white border-b-2 focus:outline-none hover:bg-black focus:border-white py-2 px-auto bg-black text-white placeholder-white focus:placeholder-opacity-40 shadow-sm"
+            className="border-transparent appearance-none border-white border-b-2 focus:outline-none hover:bg-black focus:border-white py-2 px-auto bg-black text-white placeholder-white focus:placeholder-opacity-40 shadow-sm"
             placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
@@ -50,14 +50,14 @@ function Form() {
             type="email"
             id="email"
             name="email"
-            class="border-transparent appearance-none border-white border-b-2 focus:outline-none hover:bg-black focus:border-white py-2 px-auto bg-black focus:bg-black text-white placeholder-white focus:placeholder-opacity-40 shadow-sm"
+            className="border-transparent appearance-none border-white border-b-2 focus:outline-none hover:bg-black focus:border-white py-2 px-auto bg-black focus:bg-black text-white placeholder-white focus:placeholder-opacity-40 shadow-sm"
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
           />
         </div>
         <button
-          class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-[#6600DB] rounded-sm shadow-md hover:bg-[#803ad0] "
+          className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-[#6600DB] rounded-sm shadow-md hover:bg-[#803ad0] "
           type="submit"
           id="submit"
           name="submit"
