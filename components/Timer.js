@@ -27,22 +27,22 @@ const Timer = () => {
   }, []);
 
   return (
-    <div className="flex-row space-y-5 font-sans font-style: italic text-center md:flex space-x-8 items-center justify-center my-20">
+    <div className="flex-row space-y-7 lg:space-x-12 font-mono font-family: menlo font-style: italic font-light text-center md:flex items-center justify-center mt-12">
       <div>
-        <span className="text-5xl md:text-9xl font-bold">{timeLeft.days}</span>
-        <span className="text-lg">Days</span>
+        <span className="text-5xl md:text-9xl font-extrabold">{timeLeft.days}</span>
+        <div className="text-lg items-center">Days</div>
       </div>
       <div>
-        <span className="text-5xl md:text-8xl font-bold">{timeLeft.hours}</span>
-        <span className="text-lg">Hours</span>
+        <span className="text-5xl md:text-8xl font-extrabold">{timeLeft.hours}</span>
+        <div className="text-lg">Hours</div>
       </div>
       <div>
-        <span className="text-5xl md:text-7xl font-bold">{timeLeft.minutes}</span>
-        <span className="text-lg">Minutes</span>
+        <span className="text-5xl md:text-7xl font-extrabold">{timeLeft.minutes}</span>
+        <div className="text-lg">Minutes</div>
       </div>
       <div>
-        <span className="text-5xl md:text-6xl font-bold">{timeLeft.seconds}</span>
-        <span className="text-lg">Seconds</span>
+        <span className="text-5xl md:text-6xl font-extrabold">{timeLeft.seconds}</span>
+        <div className="text-lg">Seconds</div>
       </div>
     </div>
   );

@@ -33,8 +33,6 @@ svg * { transform-origin: 50% }
 }
 
 body {
-  text-align: center;
-  font-family: 'Covered By Your Grace', cursive;
   color: white;
   background: #000;
 }

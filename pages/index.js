@@ -6,7 +6,7 @@ import Timer from "@/components/Timer";
 
 function Home() {
   return (
-      <div className="bg-black h-screen w-screen justify-center">
+      <div className="bg-black h-screen w-auto ml-40 lg:ml-0">
         <Logo />
         <Timer />
         <Gooey />
