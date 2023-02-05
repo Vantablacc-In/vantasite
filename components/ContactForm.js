@@ -34,9 +34,9 @@ function Form() {
   };
 
   return (
-    <div class=" lg:flex justify-center">
+    <div class="lg:flex justify-center md:flex">
       <div className="flex space-x-10 lg:space-x-24">
-        <div className="space-y-5 lg:space-x-10">
+        <div className="space-y-5 md:space-x-10">
           <input
             type="text"
             id="name"

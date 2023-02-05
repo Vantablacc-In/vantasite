@@ -27,7 +27,7 @@ const Timer = () => {
   }, []);
 
   return (
-    <div className="flex-row space-y-7 lg:space-x-12 font-mono font-family: menlo font-style: italic font-light text-center md:flex items-center justify-center mt-12">
+    <div className="flex-row space-y-7 md:space-x-12 font-mono font-family: menlo font-style: italic font-light text-center md:flex items-center justify-center mt-12">
       <div>
         <span className="text-5xl md:text-9xl font-extrabold">{timeLeft.days}</span>
         <div className="text-lg items-center">Days</div>
