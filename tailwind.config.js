@@ -10,9 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    fontFamily: {
-      sans: ["BlinkMacSystemFont"],
-    },
+    // fontFamily: {
+    //   sans: ["BlinkMacSystemFont"],
+    // },
   },
   plugins: [],
 };
