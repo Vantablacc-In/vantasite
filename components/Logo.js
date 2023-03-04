@@ -3,6 +3,9 @@ import React from "react";
 
 function Logo() {
   return (
+
+    // Differernt tried variants.
+    
     // <div className="relative justify-center">
     //   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
     //     <Image src="/logo.png" height={120} width={250} />
