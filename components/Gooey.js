@@ -122,3 +122,49 @@ function Gooey() {
 }
 
 export default Gooey;
+
+
+// svg * {
+//   transform-origin: 50%;
+// }
+
+// @-webkit-keyframes blob_one {
+//   to {
+//     transform: rotate(-1turn) translate(-12.5%, -12.5%);
+//   }
+// }
+// @keyframes blob_one {
+//   to {
+//     transform: rotate(-1turn) translate(-12.5%, -12.5%);
+//   }
+// }
+// @-webkit-keyframes blob_two {
+//   to {
+//     transform: rotate(-1turn) translate(12.5%, -12.5%);
+//   }
+// }
+// @keyframes blob_two {
+//   to {
+//     transform: rotate(-1turn) translate(12.5%, -12.5%);
+//   }
+// }
+// @-webkit-keyframes blob_three {
+//   to {
+//     transform: rotate(-1turn) translate(-12.5%, 12.5%);
+//   }
+// }
+// @keyframes blob_three {
+//   to {
+//     transform: rotate(-1turn) translate(-12.5%, 12.5%);
+//   }
+// }
+// @-webkit-keyframes blob_four {
+//   to {
+//     transform: rotate(-1turn) translate(-12.5%, -12.5%);
+//   }
+// }
+// @keyframes blob_four {
+//   to {
+//     transform: rotate(-1turn) translate(-12.5%, -12.5%);
+//   }
+// }
