@@ -32,7 +32,7 @@ function Logo() {
     
     <div className="relative h-full w-full">
       <Image
-        src="/eyes.gif"
+        src="/eyescropped.gif"
         className="h-full w-full object-contain"
         height={450}
         width={700}

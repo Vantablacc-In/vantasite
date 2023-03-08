@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import SuccessPopup from "./SuccessPopup";
 import { supabase } from "@/lib/supabaseClient";
 
 function Form() {
@@ -7,6 +8,8 @@ function Form() {
     name: "",
     email: "",
   });
+
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,6 +32,7 @@ function Form() {
         name: "",
         email: "",
       });
+      setShowPopup(true);
     }
   };
 
@@ -64,9 +68,11 @@ function Form() {
           name="submit"
           onClick={handleSubmit}
         >
-          Subscribe
+          Hey!
         </button>
       </div>
+      {/* Success popup */}
+      {showPopup && <SuccessPopup onClose={() => setShowPopup(false)} />}
     </div>
   );
 }

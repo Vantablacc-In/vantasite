@@ -13,6 +13,9 @@ module.exports = {
     // fontFamily: {
     //   sans: ["BlinkMacSystemFont"],
     // },
+    // colors: {
+    //   'vantapurple': '#6600DB',
+    // },
   },
   plugins: [],
 };
