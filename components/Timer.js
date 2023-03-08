@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const targetDate = new Date("March 10, 2023 00:00:00 GMT+5:30");
+const targetDate = new Date("March 20, 2023 00:00:00 GMT+5:30");
 
 const Timer = () => {
   const [timeLeft, setTimeLeft] = useState({

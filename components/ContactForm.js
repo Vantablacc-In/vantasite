@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import EmptyPopup from "./EmptyPopup";
 import SuccessPopup from "./SuccessPopup";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -10,6 +11,7 @@ function Form() {
   });
 
   const [showPopup, setShowPopup] = useState(false);
+  const [showEmptyFormPopup, setShowEmptyFormPopup] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,7 +21,12 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data, error } = await supabase.from('contacts').insert({
+    if (!formData.name.trim() || !formData.email.trim()) {
+      setShowEmptyFormPopup(true);
+      return;
+    }
+
+    const { data, error } = await supabase.from("contacts").insert({
       full_name: formData.name,
       email_id: formData.email,
     });
@@ -45,7 +52,7 @@ function Form() {
           type="text"
           id="name"
           name="name"
-          className="w-full lg:w-auto border-transparent appearance-none border-white border-b-2 focus:outline-none hover:bg-black focus:border-white py-2 px-3 md:px-5 bg-black text-gray-100 placeholder-white focus:placeholder-opacity-40 shadow-sm"
+          className="w-full lg:w-auto border-transparent appearance-none border-white border-b-2 focus:outline-none hover:bg-black focus:border-[#6600DB] py-2 px-3 md:px-5 bg-black text-gray-100 placeholder-white focus:placeholder-opacity-40 shadow-sm"
           placeholder="Full Name"
           value={formData.name}
           onChange={handleChange}
@@ -54,7 +61,7 @@ function Form() {
           type="email"
           id="email"
           name="email"
-          className="w-full lg:w-auto border-transparent appearance-none border-white border-b-2 focus:outline-none hover:bg-black focus:border-white py-2 px-3 md:px-5 bg-black text-gray-100 placeholder-white focus:placeholder-opacity-40 shadow-sm"
+          className="w-full lg:w-auto border-transparent appearance-none border-white border-b-2 focus:outline-none hover:bg-black focus:border-[#6600DB] py-2 px-3 md:px-5 bg-black text-gray-100 placeholder-white focus:placeholder-opacity-40 shadow-sm"
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
@@ -73,6 +80,9 @@ function Form() {
       </div>
       {/* Success popup */}
       {showPopup && <SuccessPopup onClose={() => setShowPopup(false)} />}
+
+      {/* Empty form popup */}
+      {showEmptyFormPopup && <EmptyPopup onClose={() => setShowEmptyFormPopup(false)} />}
     </div>
   );
 }
