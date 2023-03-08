@@ -21,7 +21,7 @@ function SuccessPopup({ onClose }) {
   // )
   return (
     <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-sm">
-      <div className="bg-black text-white p-6 rounded-lg shadow-lg border-4 border-[#6600DB]">
+      <div className="bg-black text-white p-6 rounded-lg shadow-lg border-2 border-[#6600DB]">
         <div className="text-2xl mb-4">Great things await you!</div>
         <div className="text-xs">May the fashion gods be with thee. 🖖🏽</div>
       </div>
