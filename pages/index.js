@@ -7,7 +7,7 @@ import Timer from "@/components/Timer";
 
 function Home() {
   return (
-    <div className="max-w-2xl mx-auto space-y-3 font-sans antialiased selection:bg-white selection:text-black">
+    <div className="max-w-2xl mx-auto space-y-3 font-sans antialiased selection:bg-red-600 selection:text-black">
       <Logo />
       <div>
         <Timer />
