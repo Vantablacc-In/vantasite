@@ -10,16 +10,11 @@ function Form() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log("FormData after handleChange: ", formData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // const query = `
-    //   INSERT INTO contacts (full_name, email_id)
-    //   VALUES ('${formData.name}', '${formData.email}')
-    //   RETURNING *
-    // `;
 
     const { data, error } = await supabase.from('contacts').insert({
       full_name: formData.name,
@@ -30,8 +25,14 @@ function Form() {
       console.error("Error saving form data:", error);
     } else {
       console.log("Form data saved successfully:", data);
+      setFormData({
+        name: "",
+        email: "",
+      });
     }
   };
+
+  console.log("FormData at render: ", formData);
 
   return (
     <div className="flex flex-col justify-center items-center py-6 lg:flex-row lg:justify-center">
