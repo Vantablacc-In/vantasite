@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
 import Gooey from "@/components/Gooey";
 import Logo from "@/components/Logo";
 import React from "react";
@@ -6,12 +7,16 @@ import Timer from "@/components/Timer";
 
 function Home() {
   return (
-      <div className="bg-black h-screen w-auto">
-        <Logo />
+    <div className="max-w-2xl mx-auto space-y-3 font-sans antialiased selection:bg-white selection:text-black">
+      <Logo />
+      <div>
         <Timer />
-        <Gooey />
         <ContactForm />
       </div>
+      {/* <Timer />
+        <ContactForm /> */}
+      <Footer />
+    </div>
   );
 }
 

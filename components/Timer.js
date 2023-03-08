@@ -27,22 +27,26 @@ const Timer = () => {
   }, []);
 
   return (
-    <div className="flex-row space-y-7 md:space-x-12 font-mono font-family: menlo font-style: italic font-light text-center md:flex items-center justify-center mt-12">
-      <div>
-        <span className="text-5xl md:text-9xl font-extrabold">{timeLeft.days}</span>
-        <div className="text-lg items-center">Days</div>
+    <div className="flex flex-row font-sans md:flex-row md:space-x-20 justify-center items-center space-x-7 md:space-y-0 md:-mt-6">
+      <div className="text-center">
+        <span className="text-4xl md:text-6xl font-bold">{timeLeft.days}</span>
+        <span className="text-xs md:text-sm block mt-1">Days</span>
       </div>
-      <div>
-        <span className="text-5xl md:text-8xl font-extrabold">{timeLeft.hours}</span>
-        <div className="text-lg">Hours</div>
+      <div className="text-center">
+        <span className="text-4xl md:text-6xl font-bold">{timeLeft.hours}</span>
+        <span className="text-xs md:text-sm block mt-1">Hours</span>
       </div>
-      <div>
-        <span className="text-5xl md:text-7xl font-extrabold">{timeLeft.minutes}</span>
-        <div className="text-lg">Minutes</div>
+      <div className="text-center">
+        <span className="text-4xl md:text-6xl font-bold">
+          {timeLeft.minutes}
+        </span>
+        <span className="text-xs md:text-sm block mt-1">Minutes</span>
       </div>
-      <div>
-        <span className="text-5xl md:text-6xl font-extrabold">{timeLeft.seconds}</span>
-        <div className="text-lg">Seconds</div>
+      <div className="text-center">
+        <span className="text-4xl md:text-6xl font-bold">
+          {timeLeft.seconds}
+        </span>
+        <span className="text-xs md:text-sm block mt-1">Seconds</span>
       </div>
     </div>
   );
