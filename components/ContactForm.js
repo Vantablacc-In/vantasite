@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import EmptyPopup from "./EmptyPopup";
 import SuccessPopup from "./SuccessPopup";
-import { sgMail } from "@sendgrid/mail";
+// import sendgrid from "@sendgrid/mail";
 import { supabase } from "@/lib/supabaseClient";
 
 function Form() {
@@ -43,8 +43,13 @@ function Form() {
       setShowPopup(true);
 
       // Automatic email integration
+      // const sendgridApiKey = ;
 
-      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+      console.log(process.env.SENDGRID_API_KEY);
+
+      const sendgrid = require("@sendgrid/mail");
+
+      sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
       const msg = {
         to: "rajiv1628@gmail.com", // Change to your recipient
@@ -52,8 +57,13 @@ function Form() {
         subject: "Sending with SendGrid is Fun",
         text: "and easy to do anywhere, even with Node.js",
         html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+        templateId: "d-99e92129c9c54743be70628d8b98de90",
+        dynamicTemplateData: {
+          subject: "Thanks for signing up!",
+          name: formData.name,
+        },
       };
-      sgMail
+      sendgrid
         .send(msg)
         .then(() => {
           console.log("Email sent");
@@ -94,7 +104,7 @@ function Form() {
           type="submit"
           id="submit"
           name="submit"
-          onClick={handleSubmit && {}}
+          onClick={handleSubmit}
         >
           Hey!
         </button>
