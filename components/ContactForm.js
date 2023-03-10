@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import EmptyPopup from "./EmptyPopup";
 import SuccessPopup from "./SuccessPopup";
-// import sendgrid from "@sendgrid/mail";
+import sendgrid from "@sendgrid/mail";
 import { supabase } from "@/lib/supabaseClient";
 
 function Form() {
@@ -47,30 +47,32 @@ function Form() {
 
       console.log(process.env.SENDGRID_API_KEY);
 
-      const sendgrid = require("@sendgrid/mail");
-
+      require('dotenv').config()
       sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
       const msg = {
         to: "rajiv1628@gmail.com", // Change to your recipient
         from: "churrovan@vantablacc.in", // Change to your verified sender
-        subject: "Sending with SendGrid is Fun",
-        text: "and easy to do anywhere, even with Node.js",
-        html: "<strong>and easy to do anywhere, even with Node.js</strong>",
         templateId: "d-99e92129c9c54743be70628d8b98de90",
         dynamicTemplateData: {
           subject: "Thanks for signing up!",
           name: formData.name,
         },
       };
-      sendgrid
-        .send(msg)
-        .then(() => {
-          console.log("Email sent");
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      // sendgrid
+      //   .send(msg)
+      //   .then(() => {
+      //     console.log("Email sent");
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //   });
+      try {
+        await sendgrid.send(msg);
+        console.log("Email sent");
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
