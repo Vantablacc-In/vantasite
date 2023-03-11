@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import EmptyPopup from "./EmptyPopup";
 import SuccessPopup from "./SuccessPopup";
-import sendgrid from "@sendgrid/mail";
 import { supabase } from "@/lib/supabaseClient";
 
 function Form() {
@@ -10,7 +9,6 @@ function Form() {
     name: "",
     email: "",
   });
-
   const [showPopup, setShowPopup] = useState(false);
   const [showEmptyFormPopup, setShowEmptyFormPopup] = useState(false);
 
@@ -27,52 +25,40 @@ function Form() {
       return;
     }
 
-    const { data, error } = await supabase.from("contacts").insert({
-      full_name: formData.name,
-      email_id: formData.email,
-    });
-
-    if (error) {
-      console.error("Error saving form data:", error);
-    } else {
-      console.log("Form data saved successfully:", data);
-      setFormData({
-        name: "",
-        email: "",
+    try {
+      const { data, error } = await supabase.from("contacts").insert({
+        full_name: formData.name,
+        email_id: formData.email,
       });
-      setShowPopup(true);
 
-      // Automatic email integration
-      // const sendgridApiKey = ;
+      if (error) {
+        console.error("Error saving form data:", error);
+      } else {
+        setFormData({
+          name: "",
+          email: "",
+        });
+        setShowPopup(true);
 
-      console.log(process.env.SENDGRID_API_KEY);
+        const res = await fetch("/api/sendgrid", {
+          body: JSON.stringify({
+            email: formData.email,
+            fullname: formData.name,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
 
-      require('dotenv').config()
-      sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-
-      const msg = {
-        to: "rajiv1628@gmail.com", // Change to your recipient
-        from: "churrovan@vantablacc.in", // Change to your verified sender
-        templateId: "d-99e92129c9c54743be70628d8b98de90",
-        dynamicTemplateData: {
-          subject: "Thanks for signing up!",
-          name: formData.name,
-        },
-      };
-      // sendgrid
-      //   .send(msg)
-      //   .then(() => {
-      //     console.log("Email sent");
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //   });
-      try {
-        await sendgrid.send(msg);
-        console.log("Email sent");
-      } catch (error) {
-        console.error(error);
+        const { error } = await res.json();
+        if (error) {
+          console.log(error);
+          return;
+        }
       }
+    } catch (error) {
+      console.error("Error saving form data:", error);
     }
   };
 
@@ -123,3 +109,130 @@ function Form() {
 }
 
 export default Form;
+
+// Sendgrid Method
+
+// const [formData, setFormData] = useState({
+//   name: "",
+//   email: "",
+// });
+
+// const [showPopup, setShowPopup] = useState(false);
+// const [showEmptyFormPopup, setShowEmptyFormPopup] = useState(false);
+
+// const handleChange = (e) => {
+//   setFormData({ ...formData, [e.target.name]: e.target.value });
+//   console.log("FormData after handleChange: ", formData);
+// };
+
+// dotenv.config();
+
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+
+//   if (!formData.name.trim() || !formData.email.trim()) {
+//     setShowEmptyFormPopup(true);
+//     return;
+//   }
+
+//   const { data, error } = await supabase.from("contacts").insert({
+//     full_name: formData.name,
+//     email_id: formData.email,
+//   });
+
+//   if (error) {
+//     console.error("Error saving form data:", error);
+//   } else {
+//     console.log("Form data saved successfully:", data);
+//     setFormData({
+//       name: "",
+//       email: "",
+//     });
+//     setShowPopup(true);
+//     console.log(process.env.SENDGRID_API_KEY);
+//     sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+//     const msg = {
+//       to: "rajiv1628@gmail.com", // Change to your recipient
+//       from: "churrovan@vantablacc.in", // Change to your verified sender
+//       templateId: "d-99e92129c9c54743be70628d8b98de90",
+//       dynamicTemplateData: {
+//         subject: "Thanks for signing up!",
+//         name: formData.name,
+//       },
+//     };
+//     // sendgrid
+//     //   .send(msg)
+//     //   .then(() => {
+//     //     console.log("Email sent");
+//     //   })
+//     //   .catch((error) => {
+//     //     console.error(error);
+//     //   });
+//     try {
+//       await mail.send(msg);
+//       console.log("Email sent");
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   }
+// };
+
+// Send email with SendGrid API and axios
+
+// const sendgridApiKey = process.env.SENDGRID_API_KEY;
+// const url = "https://api.sendgrid.com/v3/mail/send";
+// const headers = {
+//   Authorization: `Bearer ${sendgridApiKey}`,
+//   "Content-Type": "application/json",
+// };
+// const data = {
+//   personalizations: [
+//     {
+//       to: [{ email: "rajiv1628@gmail.com" }], // Change to your recipient
+//       dynamic_template_data: {
+//         subject: "Thanks for signing up!",
+//         name: formData.name,
+//       },
+//     },
+//   ],
+//   from: { email: "churrovan@vantablacc.in" }, // Change to your verified sender
+//   template_id: "d-99e92129c9c54743be70628d8b98de90",
+// };
+// try {
+//   const response = await axios.post(url, data, { headers });
+//   console.log("Email sent", response.data);
+// } catch (error) {
+//   console.error("Error sending email:", error);
+// }
+
+//Backend API method,
+
+//     const response = await fetch("/api/send-email", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
+//       },
+//       body: JSON.stringify({
+//         name: formData.name,
+//         email: formData.email, // add email field to the formData object
+//       }),
+//     });
+
+//     const data = await response.json();
+
+//     const responseData = await response.text();
+//     console.log(responseData);
+
+//     if (response.ok) {
+//       sendEmail(formData.email);
+//       setFormData({
+//         name: "",
+//         email: "",
+//       });
+//       setShowPopup(true);
+//     } else {
+//       console.error(data.message);
+//     }
+//   }
+// };
