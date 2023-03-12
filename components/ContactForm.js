@@ -34,11 +34,14 @@ function Form() {
       if (error) {
         console.error("Error saving form data:", error);
       } else {
+        setTimeout(() => {
+          setShowPopup(true);
+        }, 1000);
+
         setFormData({
           name: "",
           email: "",
         });
-        setShowPopup(true);
 
         // Automated email integration working with SendGrid
 
