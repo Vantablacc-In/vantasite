@@ -7,7 +7,7 @@ async function sendEmail(req, res) {
     to: `${req.body.email}`,
     from: "churrovan@vantablacc.in",
     subject: "Thanks for signing up!",
-    template_id: "d-99e92129c9c54743be70628d8b98de90",
+    template_id: "d-5a297904b59e4aec900a7ba60a984192",
   };
 
   try {

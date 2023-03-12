@@ -40,25 +40,24 @@ function Form() {
         });
         setShowPopup(true);
 
-
         // Automated email integration working with SendGrid
 
-        // const res = await fetch("/api/sendgrid", {
-        //   body: JSON.stringify({
-        //     email: formData.email,
-        //     fullname: formData.name,
-        //   }),
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   method: "POST",
-        // });
+        const res = await fetch("/api/sendgrid", {
+          body: JSON.stringify({
+            email: formData.email,
+            fullname: formData.name,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
 
-        // const { error } = await res.json();
-        // if (error) {
-        //   console.log(error);
-        //   return;
-        // }
+        const { error } = await res.json();
+        if (error) {
+          console.log(error);
+          return;
+        }
       }
     } catch (error) {
       console.error("Error saving form data:", error);
@@ -112,5 +111,3 @@ function Form() {
 }
 
 export default Form;
-
-
