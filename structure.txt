@@ -10,7 +10,8 @@ vantablacc/
 │   ├── product/
 │   │   ├── ProductCard.js
 │   │   ├── ProductList.js
-│   │   └── ProductDetails.js
+│   │   ├── ProductDetails.js
+│   │   └── ProductFilter.js
 │   ├── cart/
 │   │   ├── CartItem.js
 │   │   ├── CartSummary.js
@@ -20,11 +21,18 @@ vantablacc/
 │   │   ├── LoginForm.js
 │   │   ├── RegisterForm.js
 │   │   ├── UserProfile.js
-│   │   └── AddressForm.js
-│   └── checkout/
-│       ├── ShippingForm.js
-│       ├── PaymentForm.js
-│       └── OrderSummary.js
+│   │   ├── AddressForm.js
+│   │   ├── OrderDetails.js
+│   │   ├── ForgotPassword.js
+│   │   └── ResetPassword.js
+│   ├── checkout/
+│   │   ├── ShippingForm.js
+│   │   ├── PaymentForm.js
+│   │   └── OrderSummary.js
+│   └── admin/
+│       ├── ProductManagement.js
+│       ├── OrderManagement.js
+│       └── Dashboard.js
 ├── context/
 │   ├── CartContext.js
 │   ├── UserContext.js

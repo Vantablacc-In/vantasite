@@ -1,5 +1,5 @@
-import ContactForm from "@/components/ContactForm";
-import Footer from "@/components/Footer";
+import ContactForm from "@/components/earlysignup(old)/ContactForm";
+import Footer from "@/components/earlysignup(old)/Footer";
 import Gooey from "@/components/Gooey";
 import Logo from "@/components/Logo";
 import React from "react";
