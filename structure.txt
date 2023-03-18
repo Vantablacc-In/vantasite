@@ -93,3 +93,107 @@ vantablacc/
 ├── postcss.config.js (if using PostCSS)
 ├── package.json
 └── README.md
+
+
+
+NEW STRUCTURE
+
+vantablacc/
+│
+├── .next/
+├── components/
+│   ├── common/
+│   │   ├── Header.js
+│   │   ├── Footer.js
+│   │   ├── Button.js
+│   │   └── Layout.js
+│   ├── product/
+│   │   ├── ProductCard.js
+│   │   ├── ProductList.js
+│   │   ├── ProductDetails.js
+│   │   └── ProductFilter.js
+│   ├── cart/
+│   │   ├── CartItem.js
+│   │   ├── CartSummary.js
+│   │   ├── Cart.js
+│   │   └── MiniCart.js
+│   ├── user/
+│   │   ├── LoginForm.js
+│   │   ├── RegisterForm.js
+│   │   ├── UserProfile.js
+│   │   ├── AddressForm.js
+│   │   ├── OrderDetails.js
+│   │   ├── ForgotPassword.js
+│   │   └── ResetPassword.js
+│   ├── checkout/
+│   │   ├── ShippingForm.js
+│   │   ├── PaymentForm.js
+│   │   └── OrderSummary.js
+│   └── admin/
+│       ├── ProductManagement.js
+│       ├── OrderManagement.js
+│       └── Dashboard.js
+├── context/
+│   ├── CartContext.js
+│   ├── UserContext.js
+│   └── ProductsContext.js
+├── lib/
+│   ├── sanity.js
+│   ├── supabase.js
+│   ├── sendgrid.js
+│   └── stripe.js
+├── pages/
+│   ├── api/
+│   │   ├── stripe.js
+│   │   └── ...
+│   ├── _app.js
+│   ├── _document.js
+│   ├── index.js
+│   ├── product/
+│   │   └── [id].js
+│   ├── cart.js
+│   ├── checkout.js
+│   ├── login.js
+│   ├── register.js
+│   ├── account/
+│   │   ├── index.js
+│   │   ├── orders.js
+│   │   ├── addresses.js
+│   │   └── profile.js
+│   └── admin/
+│       ├── index.js
+│       ├── products.js
+│       └── orders.js
+├── public/
+│   ├── images/
+│   │   ├── logo.svg
+│   │   ├── favicon.ico
+│   │   └── ...
+│   └── icons/
+│       └── ...
+├── styles/
+│   ├── tailwind.css
+│   ├── globals.css
+│   └── components/
+│       ├── header.css
+│       ├── footer.css
+│       └── ...
+├── tests/
+│   ├── components/
+│   │   ├── Header.test.js
+│   │   ├── Footer.test.js
+│   │   └── ...
+│   ├── pages/
+│   │   ├── index.test.js
+│   │   ├── cart.test.js
+│   │   └── ...
+│   └── lib/
+│       ├── sanity.test.js
+│       ├── supabase.test.js
+│       ├── sendgrid.test.js
+│       └── stripe.test.js
+├── .gitignore
+├── next.config.js
+├── postcss.config.js (if using PostCSS)
+├── package.json
+└── README.md
