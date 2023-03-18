@@ -1,0 +1,93 @@
+Table: Users
+------------------------------------------------------------------------
+| Field       | Type       | Constraints         | Relationships        |
+|-------------|------------|---------------------|----------------------|
+| id          | UUID       | Primary Key         |                      |
+| email       | text       | Unique              |                      |
+| full_name   | text       |                     |                      |
+| provider    | text       |                     |                      | OAuth provider name (e.g. Google)
+| provider_id | text       | Nullable, Unique    |                      | Unique ID from OAuth provider
+| profile_pic | text       | Nullable            |                      | Profile picture URL from provider
+| created_at  | timestamp  | Default: now()      |                      |
+| updated_at  | timestamp  | Default: now()      |                      |
+------------------------------------------------------------------------
+
+Table: Products
+-------------------------------------------------------------------------------------
+| Field       | Type       | Constraints         | Relationships                   |
+|-------------|------------|---------------------|---------------------------------|
+| id          | UUID       | Primary Key         |                                 |
+| name        | text       |                     |                                 |
+| description | text       |                     |                                 |
+| price       | numeric    |                     |                                 |
+| image_url   | text       |                     |                                 |
+| category    | text       |                     |                                 |
+| created_at  | timestamp  | Default: now()      |                                 |
+| updated_at  | timestamp  | Default: now()      |                                 |
+-------------------------------------------------------------------------------------
+
+Table: Addresses
+----------------------------------------------------------------------------------------------------
+| Field      | Type       | Constraints         | Relationships                                   |
+|------------|------------|---------------------|------------------------------------------------|
+| id         | UUID       | Primary Key         |                                                |
+| user_id    | UUID       | Foreign Key         | References Users(id)                           |
+| full_name  | text       |                     |                                                |
+| street     | text       |                     |                                                |
+| city       | text       |                     |                                                |
+| state      | text       |                     |                                                |
+| zip_code   | text       |                     |                                                |
+| country    | text       |                     |                                                |
+| phone      | text       |                     |                                                |
+| is_default | boolean    | Default: false      |                                                |
+| created_at | timestamp  | Default: now()      |                                                |
+| updated_at | timestamp  | Default: now()      |                                                |
+----------------------------------------------------------------------------------------------------
+
+Table: Orders
+--------------------------------------------------------------------------------------------------
+| Field      | Type       | Constraints         | Relationships                              |
+|------------|------------|---------------------|-------------------------------------------|
+| id         | UUID       | Primary Key         |                                           |
+| user_id    | UUID       | Foreign Key         | References Users(id)                      |
+| address_id | UUID       | Foreign Key         | References Addresses(id)                  |
+| status     | text       |                     |                                           |
+| total      | numeric    |                     |                                           |
+| created_at | timestamp  | Default: now()      |                                           |
+| updated_at | timestamp  | Default: now()      |                                           |
+--------------------------------------------------------------------------------------------------
+
+Table: Order_items
+--------------------------------------------------------------------------------------------------
+| Field      | Type       | Constraints         | Relationships                              |
+|------------|------------|---------------------|-------------------------------------------|
+| id         | UUID       | Primary Key         |                                           |
+| order_id   | UUID       | Foreign Key         | References Orders(id)                     |
+| product_id | UUID       | Foreign Key         | References Products(id)                   |
+| quantity   | integer    |                     |                                           |
+| price      | numeric    |                     |                                           |
+| created_at | timestamp  | Default: now()      |                                           |
+| updated_at | timestamp  | Default: now()      |                                           |
+--------------------------------------------------------------------------------------------------
+
+Table: Carts
+------------------------------------------------------------------------
+| Field      | Type       | Constraints         | Relationships       |
+|------------|------------|---------------------|---------------------|
+| id         | UUID       | Primary Key         |                     |
+| user_id    | UUID       | Foreign Key         | References Users(id)|
+| created_at | timestamp  | Default: now()      |                     |
+| updated_at | timestamp  | Default: now()      |                     |
+------------------------------------------------------------------------
+
+Table: Cart_items
+--------------------------------------------------------------------------------------------------
+| Field      | Type       | Constraints         | Relationships                              |
+|------------|------------|---------------------|-------------------------------------------|
+| id         | UUID       | Primary Key         |                                           |
+| cart_id    | UUID       | Foreign Key         | References Carts(id)                      |
+| product_id | UUID       | Foreign Key         | References Products(id)                   |
+| quantity   | integer    |                     |                                           |
+| created_at | timestamp  | Default: now()      |                                           |
+| updated_at | timestamp  | Default: now()      |                                           |
+--------------------------------------------------------------------------------------------------
