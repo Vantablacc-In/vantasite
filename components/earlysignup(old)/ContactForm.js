@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import EmptyPopup from "../EmptyPopup";
+import EmptyPopup from "./EmptyPopup";
 import ExistingPopup from "./ExistingPopup";
 import SuccessPopup from "./SuccessPopup";
 import { supabase } from "@/lib/supabaseClient";

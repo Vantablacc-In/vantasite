@@ -1,9 +1,8 @@
 import ContactForm from "@/components/earlysignup(old)/ContactForm";
 import Footer from "@/components/earlysignup(old)/Footer";
-import Gooey from "@/components/Gooey";
-import Logo from "@/components/Logo";
+import Logo from "@/components/earlysignup(old)/Logo";
 import React from "react";
-import Timer from "@/components/Timer";
+import Timer from "@/components/earlysignup(old)/Timer";
 
 function Home() {
   return (
